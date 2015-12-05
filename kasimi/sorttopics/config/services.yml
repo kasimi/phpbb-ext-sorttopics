@@ -8,6 +8,7 @@ services:
             - @user
             - @auth
             - @request
+            - @config
             - @template_context
             - %kasimi.sorttopics.sort_by%
         tags:
