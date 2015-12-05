@@ -63,8 +63,8 @@ class acp_listener implements EventSubscriberInterface
 	 */
 	public function acp_manage_forums_display_form($event)
 	{
-		if ($event['forum_data']['forum_type'] == FORUM_POST) {
-			$this->user->add_lang_ext('kasimi/sorttopics', 'common');
+		if ($event['forum_data']['forum_type'] == FORUM_POST)
+		{
 			$topic_sort_options = $this->gen_topic_sort_options($event['forum_data']);
 			$this->template->assign_vars(array(
 				'S_SORTTOPICS_BY_OPTIONS'		=> $topic_sort_options['by'],
