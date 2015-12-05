@@ -1,0 +1,24 @@
+imports:
+    - { resource: defaults.yml }
+
+services:
+    kasimi.sorttopics.user_listener:
+        class: kasimi\sorttopics\event\user_listener
+        arguments:
+            - @user
+            - @auth
+            - @request
+            - @template_context
+            - %kasimi.sorttopics.sort_by%
+        tags:
+            - { name: event.listener }
+    kasimi.sorttopics.acp_listener:
+        class: kasimi\sorttopics\event\acp_listener
+        arguments:
+            - @user
+            - @request
+            - @template
+            - %kasimi.sorttopics.sort_by%
+            - %kasimi.sorttopics.sort_order%
+        tags:
+            - { name: event.listener }
