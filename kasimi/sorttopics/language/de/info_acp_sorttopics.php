@@ -30,6 +30,8 @@ $lang = array_merge($lang, array(
 	'SORTTOPICS_SORT_TOPICS_BY_EXPLAIN'		=> 'Jeder andere Wert als “Benutzer-Standard” erzwingt die anfängliche Sortierung wie hier angegeben, unabhängig von der Standard-Einstellung des Benutzers im persönlichen Bereich. Der Benutzer hat dennoch die Möglichkeit, die Reihenfolge am Ende der Forenindex-Seite temporär umzuschalten.',
 	'SORTTOPICS_SORT_TOPICS_ORDER'			=> 'Reihenfolge',
 	'SORTTOPICS_SORT_TOPICS_ORDER_EXPLAIN'	=> 'Diese Option wirkt sich nur aus, wenn oben etwas anderes als “Benutzer-Standard” gewählt wurde.',
+	'SORTTOPICS_APPLY_TO_SUBFORUMS'			=> 'Sortier-Einstellungen in Unter-Foren kopieren',
+	'SORTTOPICS_APPLY_TO_SUBFORUMS_EXPLAIN'	=> 'Wenn ja, werden die obigen Einstellungen in alle Unter-Foren des Forums (und deren Unter-Foren) kopiert.',
 	'SORTTOPICS_USER_DEFAULT'				=> 'Benutzer-Standard',
 	'SORTTOPICS_CREATED_TIME'				=> 'Eröffnungsdatum',
 ));
