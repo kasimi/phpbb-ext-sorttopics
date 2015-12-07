@@ -30,6 +30,8 @@ $lang = array_merge($lang, array(
 	'SORTTOPICS_SORT_TOPICS_BY_EXPLAIN'		=> 'A value other than “User default” forces the topics in this forum to be initially sorted by the specified key, disregarding the user’s sorting preferences in the UCP. The user is still able to temporarily change the sorting at the bottom of each viewforum page.',
 	'SORTTOPICS_SORT_TOPICS_ORDER'			=> 'Sort topics order',
 	'SORTTOPICS_SORT_TOPICS_ORDER_EXPLAIN'	=> 'This option is only in effect if the above option is set to a value other than “User default”.',
+	'SORTTOPICS_APPLY_TO_SUBFORUMS'			=> 'Apply this forum’s topic sorting to all sub-forums',
+	'SORTTOPICS_APPLY_TO_SUBFORUMS_EXPLAIN'	=> 'If set to Yes, the above sorting preferences are applied to all sub-forums as well.',
 	'SORTTOPICS_USER_DEFAULT'				=> 'User default',
 	'SORTTOPICS_CREATED_TIME'				=> 'Created time',
 ));

@@ -14,15 +14,31 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class user_listener implements EventSubscriberInterface
 {
+	/** @var \phpbb\user */
 	protected $user;
+
+	/** @var \phpbb\auth\auth */
 	protected $auth;
+
+	/** @var \phpbb\request\request_interface */
 	protected $request;
+
+	/** @var \phpbb\config\config */
 	protected $config;
+
+	/** @var \phpbb\template\context */
 	protected $template_context;
+
+	/** @var string */
 	protected $default_sort_by;
 
+	/** @var string */
 	private $sort_key;
+
+	/** @var string */
 	private $sort_dir;
+
+	/** @var boolean */
 	private $ucp_sortby_created_time = null;
 
 	/**
