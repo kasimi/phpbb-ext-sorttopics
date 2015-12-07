@@ -103,7 +103,7 @@ class acp_listener implements EventSubscriberInterface
 			'sort_topics_order'			=> $sort_topics_order,
 		));
 
-		// Apply this forum's sorting to all subforums
+		// Apply this forum's sorting to all sub-forums
 		if ($sort_topics_subforums)
 		{
 			$subforum_ids = array();

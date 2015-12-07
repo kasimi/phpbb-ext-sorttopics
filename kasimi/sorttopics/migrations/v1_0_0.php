@@ -10,9 +10,7 @@
 
 namespace kasimi\sorttopics\migrations;
 
-use \phpbb\db\migration\migration;
-
-class v1_0_0 extends migration
+class v1_0_0 extends \phpbb\db\migration\migration
 {
 	public function update_schema()
 	{
@@ -23,7 +21,7 @@ class v1_0_0 extends migration
 				),
 				$this->table_prefix . 'forums' => array(
 					'sort_topics_by'				=> array('CHAR:1', 'x'),
-					'sort_topics_order'				=> array('CHAR:1', 'x'),
+					'sort_topics_order'				=> array('CHAR:1', 'd'),
 				),
 			),
 		);
