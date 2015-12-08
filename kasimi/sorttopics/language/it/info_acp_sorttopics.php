@@ -19,19 +19,19 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, array(
-	'SORTTOPICS_TITLE'						=> 'Ordina Argomenti',
+	'SORTTOPICS_TITLE'						=> 'Ordina argomenti',
 	'SORTTOPICS_CONFIG'						=> 'Configurazione',
-	'SORTTOPICS_CONFIG_UPDATED'				=> '<strong>Estensione</strong> Ordina Argomenti<br />» Configurazione aggiornata',
+	'SORTTOPICS_CONFIG_UPDATED'				=> 'Estensione <strong>Ordina argomenti</strong><br />» Configurazione aggiornata',
 
-	'SORTTOPICS_UCP_ENABLED'				=> 'Consenti agli utenti di ordinare i messaggi creati a livello globale',
-	'SORTTOPICS_UCP_ENABLED_EXPLAIN'		=> 'Darà agli utenti la possibilità in PCU di ordinare i messaggi creati in tutti i forum.',
+	'SORTTOPICS_UCP_ENABLED'				=> 'Permette agli utenti di ordinare globalmente gli argomenti per data d’apertura',
+	'SORTTOPICS_UCP_ENABLED_EXPLAIN'		=> 'Fornisce agli utenti l’opzione nel <abbr title="Pannello di controllo utente">PCU</abbr> di ordinare gli argomenti per data d’apertura in tutti i forum.',
 
 	'SORTTOPICS_SORT_TOPICS_BY'				=> 'Ordina argomenti per',
-	'SORTTOPICS_SORT_TOPICS_BY_EXPLAIN'		=> 'Un valore diverso “default utente” forza gli argomenti in questo forum da essere inizialmente ordinati per la chiave specificata, ignorando le preferenze di ordinamento utente/i in PCU. L’utente è ancora in grado di modificare temporaneamente l’ordinamento in fondo a ogni pagina in viewforum.',
-	'SORTTOPICS_SORT_TOPICS_ORDER'			=> 'Ordinamento argomenti',
-	'SORTTOPICS_SORT_TOPICS_ORDER_EXPLAIN'	=> 'Questa opzione ha effetto solo se l’opzione precedente è impostata su un valore diverso in “default etente”.',
-	'SORTTOPICS_APPLY_TO_SUBFORUMS'			=> 'Applica ordinamento informazione argomento di questo forum e per tutti i sub-forum',
-	'SORTTOPICS_APPLY_TO_SUBFORUMS_EXPLAIN'	=> 'Se impostato su “SI”, le preferenze di ordinamento di cui sopra si applicano a questo forum e tutti i sub-forum (e i loro sub-forum).',
-	'SORTTOPICS_USER_DEFAULT'				=> 'Default utente',
-	'SORTTOPICS_CREATED_TIME'				=> 'Ora di creazione',
+	'SORTTOPICS_SORT_TOPICS_BY_EXPLAIN'		=> 'Un’impostazione diversa da “Predefinito utente” forza gli argomenti di questo forum a essere ordinari inizialmente in base alla chiave specificata, ignorando le preferenze di ordinamento specificate dall’utente nel PCU. L’utente può, in ogni caso, cambiare temporaneamente l’ordine in fondo ad ogni pagina <em>viewtopic</em>.',
+	'SORTTOPICS_SORT_TOPICS_ORDER'			=> 'Ordine argomenti',
+	'SORTTOPICS_SORT_TOPICS_ORDER_EXPLAIN'	=> 'Quest’opzione ha effetto solo se l’opzione precedente è impostata ad un valore diverso da “Predefinito utente”.',
+	'SORTTOPICS_APPLY_TO_SUBFORUMS'			=> 'Applica l’ordinamento di questo forum a tutti i subforum',
+	'SORTTOPICS_APPLY_TO_SUBFORUMS_EXPLAIN'	=> 'Se impostata su “Sì”, le perferenze di ordinamento qui specificate si applicheranno al forum, ai suoi subforum e ai loro subforum.',
+	'SORTTOPICS_USER_DEFAULT'				=> 'Predefinito utente',
+	'SORTTOPICS_CREATED_TIME'				=> 'Data apertura',
 ));
