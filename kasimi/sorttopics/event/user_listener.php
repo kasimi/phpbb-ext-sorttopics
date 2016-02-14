@@ -44,12 +44,12 @@ class user_listener implements EventSubscriberInterface
 	/**
  	 * Constructor
 	 *
-	 * @param \phpbb\user							$user
-	 * @param \phpbb\auth\auth						$auth
-	 * @param \phpbb\request\request_interface		$request
-	 * @param \phpbb\config\config					$config
-	 * @param \phpbb\template\context				$template_context
-	 * @param string								$default_sort_by
+	 * @param \phpbb\user						$user
+	 * @param \phpbb\auth\auth					$auth
+	 * @param \phpbb\request\request_interface	$request
+	 * @param \phpbb\config\config				$config
+	 * @param \phpbb\template\context			$template_context
+	 * @param string							$default_sort_by
 	 */
 	public function __construct(
 		\phpbb\user $user,
@@ -60,16 +60,18 @@ class user_listener implements EventSubscriberInterface
 		$default_sort_by
 	)
 	{
-		$this->user = $user;
-		$this->auth = $auth;
-		$this->request = $request;
-		$this->config = $config;
-		$this->template_context = $template_context;
-		$this->default_sort_by = $default_sort_by;
+		$this->user				= $user;
+		$this->auth				= $auth;
+		$this->request			= $request;
+		$this->config			= $config;
+		$this->template_context	= $template_context;
+		$this->default_sort_by	= $default_sort_by;
 	}
 
 	/**
 	 * Register hooks
+	 *
+	 * @return array
 	 */
 	static public function getSubscribedEvents()
 	{
@@ -85,7 +87,7 @@ class user_listener implements EventSubscriberInterface
 	}
 
 	/**
-	 * Event: core.viewforum_get_topic_data
+	 * @param $event
 	 */
 	public function viewforum_get_topic_data($event)
 	{
@@ -94,7 +96,7 @@ class user_listener implements EventSubscriberInterface
 	}
 
 	/**
-	 * Event: core.viewforum_get_topic_ids_data
+	 * @param $event
 	 */
 	public function viewforum_get_topic_ids_data($event)
 	{
@@ -159,7 +161,7 @@ class user_listener implements EventSubscriberInterface
 	/**
 	 * Adds the 'Created time' <option> to the template
 	 *
-	 * Event: core.ucp_prefs_modify_common
+	 * @param $event
 	 */
 	public function ucp_prefs_modify_common($event)
 	{
@@ -172,6 +174,11 @@ class user_listener implements EventSubscriberInterface
 
 	/**
 	 * Updates the template data by inserting the (possibly selected) 'Created time' <option> into the $select tag right after the 'Post time' <option>
+	 *
+	 * @param $template_select_key_var
+	 * @param $sort_key
+	 * @param bool $template_select_dir_var
+	 * @param bool $sort_dir
 	 */
 	protected function inject_created_time_select_option($template_select_key_var, $sort_key, $template_select_dir_var = false, $sort_dir = false)
 	{
@@ -196,6 +203,10 @@ class user_listener implements EventSubscriberInterface
 
 	/**
 	 * Marks the option with the specified value as selected
+	 *
+	 * @param $select
+	 * @param $selected_option_value
+	 * @return string
 	 */
 	protected function set_selected($select, $selected_option_value)
 	{
@@ -207,7 +218,7 @@ class user_listener implements EventSubscriberInterface
 	/**
 	 * Sanitize user input
 	 *
-	 * Event: core.ucp_prefs_view_data
+	 * @param $event
 	 */
 	public function ucp_prefs_view_data($event)
 	{
@@ -228,7 +239,7 @@ class user_listener implements EventSubscriberInterface
 	/**
 	 * Store user input
 	 *
-	 * Event: core.ucp_prefs_view_update_data
+	 * @param $event
 	 */
 	public function ucp_prefs_view_update_data($event)
 	{
