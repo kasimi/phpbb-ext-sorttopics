@@ -31,5 +31,4 @@ $lang = array_merge($lang, array(
 	'SORTTOPICS_SORT_TOPICS_ORDER'			=> 'Orden de temas ordenados',
 	'SORTTOPICS_SORT_TOPICS_ORDER_EXPLAIN'	=> 'Esta opción sólo está en efecto si la opción anterior se establece en un valor distinto de “Por defecto del usuario”.',
 	'SORTTOPICS_USER_DEFAULT'				=> 'Por defecto del usuario',
-	'SORTTOPICS_CREATED_TIME'				=> 'Fecha de creación',
 ));

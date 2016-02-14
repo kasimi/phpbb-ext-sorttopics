@@ -133,6 +133,8 @@ class acp_listener implements EventSubscriberInterface
 	 * Generate <select> markup
 	 */
 	protected function gen_topic_sort_options($forum_data) {
+		$this->user->add_lang_ext('kasimi/sorttopics', 'common');
+
 		// Dummy variables
 		$sort_days = 0;
 		$limit_days = array();

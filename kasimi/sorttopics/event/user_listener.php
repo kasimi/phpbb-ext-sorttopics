@@ -186,7 +186,7 @@ class user_listener implements EventSubscriberInterface
 		$select = $rootref[$template_select_key_var];
 
 		// Insert 'Created time'
-		$this->user->add_lang_ext('kasimi/sorttopics', 'info_acp_sorttopics');
+		$this->user->add_lang_ext('kasimi/sorttopics', 'common');
 		$new_option = '<option value="c">' . $this->user->lang('SORTTOPICS_CREATED_TIME') . '</option>';
 		$select = preg_replace("/(value=\"t\".*?<\/option>)/su", "$1" . $new_option, $select);
 

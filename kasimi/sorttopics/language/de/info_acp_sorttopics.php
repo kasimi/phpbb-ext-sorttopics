@@ -33,5 +33,4 @@ $lang = array_merge($lang, array(
 	'SORTTOPICS_APPLY_TO_SUBFORUMS'			=> 'Sortier-Einstellungen in Unter-Foren kopieren',
 	'SORTTOPICS_APPLY_TO_SUBFORUMS_EXPLAIN'	=> 'Wenn ja, werden die obigen Einstellungen in alle Unter-Foren des Forums (und deren Unter-Foren) kopiert.',
 	'SORTTOPICS_USER_DEFAULT'				=> 'Benutzer-Standard',
-	'SORTTOPICS_CREATED_TIME'				=> 'Eröffnungsdatum',
 ));

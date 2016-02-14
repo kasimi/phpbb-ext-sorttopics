@@ -33,5 +33,4 @@ $lang = array_merge($lang, array(
 	'SORTTOPICS_APPLY_TO_SUBFORUMS'			=> 'Applica l’ordinamento di questo forum a tutti i subforum',
 	'SORTTOPICS_APPLY_TO_SUBFORUMS_EXPLAIN'	=> 'Se impostata su “Sì”, le perferenze di ordinamento qui specificate si applicheranno al forum, ai suoi subforum e ai loro subforum.',
 	'SORTTOPICS_USER_DEFAULT'				=> 'Predefinito utente',
-	'SORTTOPICS_CREATED_TIME'				=> 'Data apertura',
 ));

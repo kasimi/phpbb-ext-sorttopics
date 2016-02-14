@@ -33,5 +33,4 @@ $lang = array_merge($lang, array(
 	'SORTTOPICS_APPLY_TO_SUBFORUMS'			=> 'Apply this forum’s topic sorting to all sub-forums',
 	'SORTTOPICS_APPLY_TO_SUBFORUMS_EXPLAIN'	=> 'If set to “Yes“, the above sorting preferences are applied to this forum and all sub-forums (and their sub-forums).',
 	'SORTTOPICS_USER_DEFAULT'				=> 'User default',
-	'SORTTOPICS_CREATED_TIME'				=> 'Created time',
 ));
