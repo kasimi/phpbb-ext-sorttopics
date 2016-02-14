@@ -21,7 +21,7 @@ class sorttopics_info
 				'settings' => array(
 					'title'	=> 'SORTTOPICS_CONFIG',
 					'auth'	=> 'ext_kasimi/sorttopics && acl_a_board',
-					'cat'	=> array('SORTTOPICS_TITLE')
+					'cat'	=> array('SORTTOPICS_TITLE'),
 				),
 			),
 		);
