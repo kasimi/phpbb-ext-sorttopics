@@ -3,12 +3,12 @@
 /**
  *
  * @package phpBB Extension - Sort Topics
- * @copyright (c) 2015 kasimi
+ * @copyright (c) 2016 kasimi
  * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
  *
  */
 
-namespace kasimi/sorttopics;
+namespace kasimi\sorttopics;
 
 class ext extends \phpbb\extension\base
 {
