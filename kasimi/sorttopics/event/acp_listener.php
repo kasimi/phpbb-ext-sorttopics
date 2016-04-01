@@ -102,12 +102,14 @@ class acp_listener implements EventSubscriberInterface
 	{
 		$sort_topics_by = $this->request->variable('sk', $this->default_sort_by);
 		$sort_topics_order = $this->request->variable('sd', $this->default_sort_order);
-		$sort_topics_subforums = $this->request->variable('sort_topics_subforums', 0);
+		$sort_topics_subforums = $this->request->variable('sort_topics_subforums', false);
 
-		$event['forum_data'] = array_merge($event['forum_data'], array(
+		$sort_options = array(
 			'sort_topics_by'	=> $sort_topics_by,
 			'sort_topics_order'	=> $sort_topics_order,
-		));
+		);
+
+		$event['forum_data'] = array_merge($event['forum_data'], $sort_options);
 
 		// Apply this forum's sorting to all sub-forums
 		if ($sort_topics_subforums)
@@ -120,23 +122,10 @@ class acp_listener implements EventSubscriberInterface
 
 			if (!empty($subforum_ids))
 			{
-				$this->db->sql_transaction('begin');
-
-				foreach ($subforum_ids as $subforum_id)
-				{
-					$sql_ary = array(
-						'sort_topics_by'	=> $sort_topics_by,
-						'sort_topics_order'	=> $sort_topics_order,
-					);
-
-					$sql = 'UPDATE ' . FORUMS_TABLE . '
-						SET ' . $this->db->sql_build_array('UPDATE', $sql_ary) . '
-						WHERE forum_id = ' . (int) $subforum_id;
-
-					$this->db->sql_query($sql_ary);
-				}
-
-				$this->db->sql_transaction('commit');
+				$sql = 'UPDATE ' . FORUMS_TABLE . '
+					SET ' . $this->db->sql_build_array('UPDATE', $sort_options) . '
+					WHERE ' . $this->db->sql_in_set('forum_id', $subforum_ids);
+				$this->db->sql_query($sql);
 			}
 		}
 	}
