@@ -38,31 +38,31 @@ class acp_listener implements EventSubscriberInterface
 	/**
 	 * Constructor
 	 *
-	 * @param \phpbb\user							$user
-	 * @param \phpbb\request\request_interface		$request
-	 * @param \phpbb\config\config					$config
-	 * @param \phpbb\db\driver\driver_interface		$db
-	 * @param \phpbb\template\template				$template
-	 * @param string								$default_sort_by
-	 * @param string								$default_sort_order
+	 * @param \phpbb\user						$user
+	 * @param \phpbb\request\request_interface	$request
+	 * @param \phpbb\config\config				$config
+	 * @param \phpbb\db\driver\driver_interface	$db
+	 * @param \phpbb\template\template			$template
+	 * @param string							$default_sort_by
+	 * @param string							$default_sort_order
 	 */
 	public function __construct(
-		\phpbb\user $user,
-		\phpbb\request\request_interface $request,
-		\phpbb\config\config $config,
-		\phpbb\db\driver\driver_interface $db,
-		\phpbb\template\template $template,
-		$default_sort_by,
-		$default_sort_order
+		\phpbb\user								$user,
+		\phpbb\request\request_interface		$request,
+		\phpbb\config\config					$config,
+		\phpbb\db\driver\driver_interface		$db,
+		\phpbb\template\template				$template,
+												$default_sort_by,
+												$default_sort_order
 	)
 	{
-		$this->user 				= $user;
-		$this->request				= $request;
-		$this->config				= $config;
-		$this->db					= $db;
-		$this->template				= $template;
-		$this->default_sort_by		= $default_sort_by;
-		$this->default_sort_order	= $default_sort_order;
+		$this->user 							= $user;
+		$this->request							= $request;
+		$this->config							= $config;
+		$this->db								= $db;
+		$this->template							= $template;
+		$this->default_sort_by					= $default_sort_by;
+		$this->default_sort_order				= $default_sort_order;
 	}
 
 	/**
@@ -120,7 +120,7 @@ class acp_listener implements EventSubscriberInterface
 				$subforum_ids[] = (int) $subforum['forum_id'];
 			}
 
-			if (!empty($subforum_ids))
+			if ($subforum_ids)
 			{
 				$sql = 'UPDATE ' . FORUMS_TABLE . '
 					SET ' . $this->db->sql_build_array('UPDATE', $sort_options) . '

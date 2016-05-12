@@ -2,8 +2,15 @@ imports:
     - { resource: defaults.yml }
 
 services:
-    kasimi.sorttopics.user_listener:
-        class: kasimi\sorttopics\event\user_listener
+    kasimi.sorttopics.sort_core:
+        class: kasimi\sorttopics\core\sort_core
+        abstract: true
+        calls:
+            - [set_user, ['@user']]
+            - [set_template_context, ['@template_context']]
+    kasimi.sorttopics.viewforum_listener:
+        class: kasimi\sorttopics\event\viewforum_listener
+        parent: kasimi.sorttopics.sort_core
         arguments:
             - @user
             - @auth
@@ -11,6 +18,14 @@ services:
             - @config
             - @template_context
             - %kasimi.sorttopics.sort_by%
+        tags:
+            - { name: event.listener }
+    kasimi.sorttopics.ucp_listener:
+        class: kasimi\sorttopics\event\ucp_listener
+        parent: kasimi.sorttopics.sort_core
+        arguments:
+            - @user
+            - @config
         tags:
             - { name: event.listener }
     kasimi.sorttopics.acp_listener:

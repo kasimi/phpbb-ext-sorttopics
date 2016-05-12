@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "Sort Topics extends the ACP forums/categories settings by options that allows the administrator to force the way topics are sorted, overriding the user's UCP setting. Also optionally extends the UCP -> Board preferences -> Display options -> Topics ordering list by 'Created time' for each user, resulting in all topics being sorted by topic creation time when viewing any forum.",
 	"homepage": "https://github.com/kasimi",
-	"version": "1.0.2",
-	"time": "2016-04-01",
+	"version": "1.0.3",
+	"time": "2016-05-12",
 	"license": "GPL-2.0",
 	"authors": [
 		{
