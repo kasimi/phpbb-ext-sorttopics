@@ -112,7 +112,7 @@ class acp_listener implements EventSubscriberInterface
 		$event['forum_data'] = array_merge($event['forum_data'], $sort_options);
 
 		// Apply this forum's sorting to all sub-forums
-		if ($sort_topics_subforums)
+		if ($event['action'] == 'edit' && $sort_topics_subforums)
 		{
 			$subforum_ids = array();
 			foreach (get_forum_branch($event['forum_data']['forum_id'], 'children', 'descending', false) as $subforum)
