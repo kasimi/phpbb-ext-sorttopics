@@ -15,9 +15,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class viewforum_listener extends sort_core implements EventSubscriberInterface
 {
-	/** @var \phpbb\user */
-	protected $user;
-
 	/** @var \phpbb\auth\auth */
 	protected $auth;
 
@@ -26,9 +23,6 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 
 	/** @var \phpbb\config\config */
 	protected $config;
-
-	/** @var \phpbb\template\context */
-	protected $template_context;
 
 	/** @var string */
 	protected $default_sort_by;
@@ -51,27 +45,21 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 	/**
  	 * Constructor
 	 *
-	 * @param \phpbb\user						$user
 	 * @param \phpbb\auth\auth					$auth
 	 * @param \phpbb\request\request_interface	$request
 	 * @param \phpbb\config\config				$config
-	 * @param \phpbb\template\context			$template_context
 	 * @param string							$default_sort_by
 	 */
 	public function __construct(
-		\phpbb\user								$user,
 		\phpbb\auth\auth						$auth,
 		\phpbb\request\request_interface		$request,
 		\phpbb\config\config					$config,
-		\phpbb\template\context					$template_context,
 												$default_sort_by
 	)
 	{
-		$this->user								= $user;
 		$this->auth								= $auth;
 		$this->request							= $request;
 		$this->config							= $config;
-		$this->template_context					= $template_context;
 		$this->default_sort_by					= $default_sort_by;
 	}
 

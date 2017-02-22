@@ -12,11 +12,9 @@ services:
         class: kasimi\sorttopics\event\viewforum_listener
         parent: kasimi.sorttopics.sort_core
         arguments:
-            - @user
             - @auth
             - @request
             - @config
-            - @template_context
             - %kasimi.sorttopics.sort_by%
         tags:
             - { name: event.listener }
@@ -24,7 +22,6 @@ services:
         class: kasimi\sorttopics\event\ucp_listener
         parent: kasimi.sorttopics.sort_core
         arguments:
-            - @user
             - @config
         tags:
             - { name: event.listener }

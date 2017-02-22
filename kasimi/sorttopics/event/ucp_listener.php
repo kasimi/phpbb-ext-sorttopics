@@ -15,24 +15,18 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ucp_listener extends sort_core implements EventSubscriberInterface
 {
-	/** @var \phpbb\user */
-	protected $user;
-
 	/** @var \phpbb\config\config */
 	protected $config;
 
 	/**
  	 * Constructor
 	 *
-	 * @param \phpbb\user			$user
 	 * @param \phpbb\config\config	$config
 	 */
 	public function __construct(
-		\phpbb\user					$user,
 		\phpbb\config\config		$config
 	)
 	{
-		$this->user					= $user;
 		$this->config				= $config;
 	}
 
