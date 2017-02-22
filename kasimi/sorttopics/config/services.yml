@@ -30,7 +30,6 @@ services:
         arguments:
             - '@user'
             - '@request'
-            - '@config'
             - '@dbal.conn'
             - '@template'
             - '%kasimi.sorttopics.sort_by%'

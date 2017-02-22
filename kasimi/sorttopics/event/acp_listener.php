@@ -10,7 +10,6 @@
 
 namespace kasimi\sorttopics\event;
 
-use phpbb\config\config;
 use phpbb\db\driver\driver_interface as db_interface;
 use phpbb\request\request_interface;
 use phpbb\template\template;
@@ -25,9 +24,6 @@ class acp_listener implements EventSubscriberInterface
 
 	/** @var request_interface */
 	protected $request;
-
-	/** @var config */
-	protected $config;
 
 	/** @var db_interface */
 	protected $db;
@@ -46,7 +42,6 @@ class acp_listener implements EventSubscriberInterface
 	 *
 	 * @param user				$user
 	 * @param request_interface	$request
-	 * @param config			$config
 	 * @param db_interface		$db
 	 * @param template			$template
 	 * @param string			$default_sort_by
@@ -55,7 +50,6 @@ class acp_listener implements EventSubscriberInterface
 	public function __construct(
 		user $user,
 		request_interface $request,
-		config $config,
 		db_interface $db,
 		template $template,
 		$default_sort_by,
@@ -64,7 +58,6 @@ class acp_listener implements EventSubscriberInterface
 	{
 		$this->user 				= $user;
 		$this->request				= $request;
-		$this->config				= $config;
 		$this->db					= $db;
 		$this->template				= $template;
 		$this->default_sort_by		= $default_sort_by;
