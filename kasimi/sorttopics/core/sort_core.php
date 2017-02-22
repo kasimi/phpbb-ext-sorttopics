@@ -10,26 +10,29 @@
 
 namespace kasimi\sorttopics\core;
 
+use phpbb\template\context;
+use phpbb\user;
+
 abstract class sort_core
 {
-	/** @var \phpbb\user */
+	/** @var user */
 	protected $user;
 
-	/** @var \phpbb\template\context */
+	/** @var context */
 	protected $template_context;
 
 	/**
-	 * @param \phpbb\user $user
+	 * @param user $user
 	 */
-	public function set_user(\phpbb\user $user)
+	public function set_user(user $user)
 	{
 		$this->user = $user;
 	}
 
 	/**
-	 * @param \phpbb\template\context $template_context
+	 * @param context $template_context
 	 */
-	public function set_template_context(\phpbb\template\context $template_context)
+	public function set_template_context(context $template_context)
 	{
 		$this->template_context = $template_context;
 	}

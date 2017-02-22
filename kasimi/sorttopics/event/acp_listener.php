@@ -10,23 +10,29 @@
 
 namespace kasimi\sorttopics\event;
 
+use phpbb\config\config;
+use phpbb\db\driver\driver_interface as db_interface;
+use phpbb\request\request_interface;
+use phpbb\template\template;
+use phpbb\user;
+use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class acp_listener implements EventSubscriberInterface
 {
-	/** @var \phpbb\user */
+	/** @var user */
 	protected $user;
 
-	/** @var \phpbb\request\request_interface */
+	/** @var request_interface */
 	protected $request;
 
-	/** @var \phpbb\config\config */
+	/** @var config */
 	protected $config;
 
-	/** @var \phpbb\db\driver\driver_interface */
+	/** @var db_interface */
 	protected $db;
 
-	/** @var \phpbb\template\template */
+	/** @var template */
 	protected $template;
 
 	/** @var string */
@@ -38,31 +44,31 @@ class acp_listener implements EventSubscriberInterface
 	/**
 	 * Constructor
 	 *
-	 * @param \phpbb\user						$user
-	 * @param \phpbb\request\request_interface	$request
-	 * @param \phpbb\config\config				$config
-	 * @param \phpbb\db\driver\driver_interface	$db
-	 * @param \phpbb\template\template			$template
-	 * @param string							$default_sort_by
-	 * @param string							$default_sort_order
+	 * @param user				$user
+	 * @param request_interface	$request
+	 * @param config			$config
+	 * @param db_interface		$db
+	 * @param template			$template
+	 * @param string			$default_sort_by
+	 * @param string			$default_sort_order
 	 */
 	public function __construct(
-		\phpbb\user								$user,
-		\phpbb\request\request_interface		$request,
-		\phpbb\config\config					$config,
-		\phpbb\db\driver\driver_interface		$db,
-		\phpbb\template\template				$template,
-												$default_sort_by,
-												$default_sort_order
+		user $user,
+		request_interface $request,
+		config $config,
+		db_interface $db,
+		template $template,
+		$default_sort_by,
+		$default_sort_order
 	)
 	{
-		$this->user 							= $user;
-		$this->request							= $request;
-		$this->config							= $config;
-		$this->db								= $db;
-		$this->template							= $template;
-		$this->default_sort_by					= $default_sort_by;
-		$this->default_sort_order				= $default_sort_order;
+		$this->user 				= $user;
+		$this->request				= $request;
+		$this->config				= $config;
+		$this->db					= $db;
+		$this->template				= $template;
+		$this->default_sort_by		= $default_sort_by;
+		$this->default_sort_order	= $default_sort_order;
 	}
 
 	/**
@@ -81,7 +87,7 @@ class acp_listener implements EventSubscriberInterface
 	/**
 	 * Add <select>s to forum preferences page
 	 *
-	 * @param $event
+	 * @param Event $event
 	 */
 	public function acp_manage_forums_display_form($event)
 	{
@@ -95,7 +101,7 @@ class acp_listener implements EventSubscriberInterface
 	/**
 	 * Store user input
 	 *
-	 * @param $event
+	 * @param Event $event
 	 */
 	public function acp_manage_forums_request_data($event)
 	{
@@ -135,7 +141,8 @@ class acp_listener implements EventSubscriberInterface
 	 * @param $forum_data
 	 * @return array
 	 */
-	protected function gen_topic_sort_options($forum_data) {
+	protected function gen_topic_sort_options($forum_data)
+	{
 		$this->user->add_lang_ext('kasimi/sorttopics', 'common');
 
 		// Dummy variables

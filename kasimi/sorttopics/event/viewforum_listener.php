@@ -11,17 +11,21 @@
 namespace kasimi\sorttopics\event;
 
 use kasimi\sorttopics\core\sort_core;
+use phpbb\auth\auth;
+use phpbb\config\config;
+use phpbb\request\request_interface;
+use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class viewforum_listener extends sort_core implements EventSubscriberInterface
 {
-	/** @var \phpbb\auth\auth */
+	/** @var auth */
 	protected $auth;
 
-	/** @var \phpbb\request\request_interface */
+	/** @var request_interface */
 	protected $request;
 
-	/** @var \phpbb\config\config */
+	/** @var config */
 	protected $config;
 
 	/** @var string */
@@ -45,22 +49,22 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 	/**
  	 * Constructor
 	 *
-	 * @param \phpbb\auth\auth					$auth
-	 * @param \phpbb\request\request_interface	$request
-	 * @param \phpbb\config\config				$config
-	 * @param string							$default_sort_by
+	 * @param auth				$auth
+	 * @param request_interface	$request
+	 * @param config			$config
+	 * @param string			$default_sort_by
 	 */
 	public function __construct(
-		\phpbb\auth\auth						$auth,
-		\phpbb\request\request_interface		$request,
-		\phpbb\config\config					$config,
-												$default_sort_by
+		auth $auth,
+		request_interface $request,
+		config $config,
+		$default_sort_by
 	)
 	{
-		$this->auth								= $auth;
-		$this->request							= $request;
-		$this->config							= $config;
-		$this->default_sort_by					= $default_sort_by;
+		$this->auth				= $auth;
+		$this->request			= $request;
+		$this->config			= $config;
+		$this->default_sort_by	= $default_sort_by;
 	}
 
 	/**
@@ -80,7 +84,7 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 	/**
 	 * Remember default sorting for later
 	 *
-	 * @param $event
+	 * @param Event $event
 	 */
 	public function viewforum_get_topic_data($event)
 	{
@@ -91,7 +95,7 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 	/**
 	 * Apply custom sorting to SQL query
 	 *
-	 * @param $event
+	 * @param Event $event
 	 */
 	public function viewforum_get_topic_ids_data($event)
 	{
@@ -165,10 +169,9 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 		$event['sql_sort_order'] = $sql_sort_order;
 		$event['sql_ary'] = $sql_ary;
 
-		$rootref = &$this->template_context->get_root_ref();
-
 		if ($this->sort_options_source == 'request' && $this->custom_sort_key == 'c')
 		{
+			$rootref = &$this->template_context->get_root_ref();
 			$rootref['U_VIEW_FORUM'] .= '&amp;sk=c';
 		}
 	}
@@ -176,7 +179,7 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 	/**
 	 * Add the sorting parameter to the pagination links
 	 *
-	 * @param $event
+	 * @param Event $event
 	 */
 	public function pagination_generate_page_link($event)
 	{

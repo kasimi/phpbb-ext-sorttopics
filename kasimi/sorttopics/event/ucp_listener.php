@@ -11,23 +11,28 @@
 namespace kasimi\sorttopics\event;
 
 use kasimi\sorttopics\core\sort_core;
+use phpbb\config\config;
+use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ucp_listener extends sort_core implements EventSubscriberInterface
 {
-	/** @var \phpbb\config\config */
+	/** @var config */
 	protected $config;
+
+	/** @var bool */
+	protected $ucp_sortby_created_time;
 
 	/**
  	 * Constructor
 	 *
-	 * @param \phpbb\config\config	$config
+	 * @param config $config
 	 */
 	public function __construct(
-		\phpbb\config\config		$config
+		config $config
 	)
 	{
-		$this->config				= $config;
+		$this->config = $config;
 	}
 
 	/**
@@ -47,7 +52,7 @@ class ucp_listener extends sort_core implements EventSubscriberInterface
 	/**
 	 * Adds the 'Created time' <option> to the template
 	 *
-	 * @param $event
+	 * @param Event $event
 	 */
 	public function ucp_prefs_modify_common($event)
 	{
@@ -61,7 +66,7 @@ class ucp_listener extends sort_core implements EventSubscriberInterface
 	/**
 	 * Sanitize user input
 	 *
-	 * @param $event
+	 * @param Event $event
 	 */
 	public function ucp_prefs_view_data($event)
 	{
@@ -82,7 +87,7 @@ class ucp_listener extends sort_core implements EventSubscriberInterface
 	/**
 	 * Store user input
 	 *
-	 * @param $event
+	 * @param Event $event
 	 */
 	public function ucp_prefs_view_update_data($event)
 	{
