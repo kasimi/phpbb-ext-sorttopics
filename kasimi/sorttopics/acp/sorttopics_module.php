@@ -33,14 +33,11 @@ class sorttopics_module
 
 			$config->set('kasimi.sorttopics.ucp_enabled', $request->variable('sorttopics_ucp_enabled', 0));
 
-			$user_id = empty($user->data) ? ANONYMOUS : $user->data['user_id'];
-			$user_ip = empty($user->ip) ? '' : $user->ip;
-			$phpbb_log->add('admin', $user_id, $user_ip, 'SORTTOPICS_CONFIG_UPDATED');
+			$phpbb_log->add('admin', $user->data['user_id'], $user->ip, 'SORTTOPICS_CONFIG_UPDATED');
 			trigger_error($user->lang('CONFIG_UPDATED') . adm_back_link($this->u_action));
 		}
 
 		$template->assign_vars(array(
-			'SORTTOPICS_VERSION'		=> $config['kasimi.sorttopics.version'],
 			'SORTTOPICS_UCP_ENABLED'	=> $config['kasimi.sorttopics.ucp_enabled'],
 			'U_ACTION'					=> $this->u_action,
 		));
