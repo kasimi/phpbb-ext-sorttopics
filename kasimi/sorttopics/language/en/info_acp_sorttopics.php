@@ -21,7 +21,7 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, array(
 	'SORTTOPICS_TITLE'						=> 'Sort Topics',
 	'SORTTOPICS_CONFIG'						=> 'Configuration',
-	'SORTTOPICS_CONFIG_UPDATED'				=> '<strong>Sort Topics</strong>Extension<br />» Configuration updated',
+	'SORTTOPICS_CONFIG_UPDATED'				=> '<strong>Sort Topics</strong> extension<br />» Configuration updated',
 
 	'SORTTOPICS_UCP_ENABLED'				=> 'Allow users to globally sort topics by created time',
 	'SORTTOPICS_UCP_ENABLED_EXPLAIN'		=> 'Give users the option in the UCP to sort topics by created time in all forums.',

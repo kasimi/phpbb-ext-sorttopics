@@ -21,7 +21,7 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, array(
 	'SORTTOPICS_TITLE'						=> 'Themen sortieren',
 	'SORTTOPICS_CONFIG'						=> 'Konfiguration',
-	'SORTTOPICS_CONFIG_UPDATED'				=> '<strong>Sort Topics</strong>Extension<br />» Konfiguration aktualisiert',
+	'SORTTOPICS_CONFIG_UPDATED'				=> '<strong>Sort Topics</strong> Extension<br />» Konfiguration aktualisiert',
 
 	'SORTTOPICS_UCP_ENABLED'				=> 'Erlaube Benutzern global, Themen nach Eröffnungsdatum zu sortieren',
 	'SORTTOPICS_UCP_ENABLED_EXPLAIN'		=> 'Gibt Benutzern im persönlichen Bereich die Möglichkeit, in allen Foren die Themen nach Eröffnungsdatum zu sortieren.',
