@@ -1,25 +1,25 @@
-<!-- INCLUDE overall_header.html -->
+{% include 'overall_header.html' %}
 
-<h1>{L_SORTTOPICS_TITLE}</h1>
+<h1>{{ lang('SORTTOPICS_TITLE') }}</h1>
 
-<form id="acp_board" method="post" action="{U_ACTION}">
+<form id="acp_board" method="post" action="{{ U_ACTION }}">
 	<fieldset>
 		<dl>
-			<dt><label for="sorttopics_ucp_enabled">{L_SORTTOPICS_UCP_ENABLED}{L_COLON}</label><br /><span>{L_SORTTOPICS_UCP_ENABLED_EXPLAIN}</span></dt>
+			<dt><label for="sorttopics_ucp_enabled">{{ lang('SORTTOPICS_UCP_ENABLED') ~ lang('COLON') }}</label><br /><span>{{ lang('SORTTOPICS_UCP_ENABLED_EXPLAIN') }}</span></dt>
 			<dd>
-				<label><input type="radio" class="radio" name="sorttopics_ucp_enabled" value="1" id="sorttopics_ucp_enabled"<!-- IF SORTTOPICS_UCP_ENABLED --> checked="checked"<!-- ENDIF -->/> {L_YES}</label>
-				<label><input type="radio" class="radio" name="sorttopics_ucp_enabled" value="0"<!-- IF not SORTTOPICS_UCP_ENABLED --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+				<label><input type="radio" class="radio" name="sorttopics_ucp_enabled" value="1" id="sorttopics_ucp_enabled"{{ SORTTOPICS_UCP_ENABLED ? ' checked="checked"' : '' }}/> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="sorttopics_ucp_enabled" value="0"{{ not SORTTOPICS_UCP_ENABLED ? ' checked="checked"' : '' }} /> {{ lang('NO') }}</label>
 			</dd>
 		</dl>
 	</fieldset>
 	<fieldset>
-		<legend>{L_ACP_SUBMIT_CHANGES}</legend>
+		<legend>{{ lang('ACP_SUBMIT_CHANGES') }}</legend>
 		<p class="submit-buttons">
-			<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
-			<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+			<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+			<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" />
 		</p>
-		{S_FORM_TOKEN}
+		{{ S_FORM_TOKEN }}
 	</fieldset>
 </form>
 
-<!-- INCLUDE overall_footer.html -->
+{% include 'overall_footer.html' %}
