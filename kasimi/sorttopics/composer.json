@@ -5,7 +5,7 @@
 	"homepage": "https://kasimi.net",
 	"version": "1.1.0",
 	"time": "2017-07-05",
-	"license": "GPL-2.0",
+	"license": "GPL-2.0-only",
 	"authors": [
 		{
 			"name": "kasimi",
