@@ -12,7 +12,7 @@ namespace kasimi\sorttopics\event;
 
 use kasimi\sorttopics\core\sort_core;
 use phpbb\config\config;
-use Symfony\Component\EventDispatcher\Event;
+use phpbb\event\data;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ucp_listener extends sort_core implements EventSubscriberInterface
@@ -24,8 +24,6 @@ class ucp_listener extends sort_core implements EventSubscriberInterface
 	protected $ucp_sortby_created_time;
 
 	/**
- 	 * Constructor
-	 *
 	 * @param config $config
 	 */
 	public function __construct(
@@ -36,11 +34,9 @@ class ucp_listener extends sort_core implements EventSubscriberInterface
 	}
 
 	/**
-	 * Register hooks
-	 *
 	 * @return array
 	 */
-	static public function getSubscribedEvents()
+	public static function getSubscribedEvents()
 	{
 		return [
 			'core.ucp_prefs_modify_common'			=> 'ucp_prefs_modify_common',
@@ -52,9 +48,9 @@ class ucp_listener extends sort_core implements EventSubscriberInterface
 	/**
 	 * Adds the 'Created time' <option> to the template
 	 *
-	 * @param Event $event
+	 * @param data $event
 	 */
-	public function ucp_prefs_modify_common($event)
+	public function ucp_prefs_modify_common(data $event)
 	{
 		if ($this->config['kasimi.sorttopics.ucp_enabled'] && $event['mode'] == 'view')
 		{
@@ -66,9 +62,9 @@ class ucp_listener extends sort_core implements EventSubscriberInterface
 	/**
 	 * Sanitize user input
 	 *
-	 * @param Event $event
+	 * @param data $event
 	 */
-	public function ucp_prefs_view_data($event)
+	public function ucp_prefs_view_data(data $event)
 	{
 		if ($this->config['kasimi.sorttopics.ucp_enabled'] && $event['submit'])
 		{
@@ -87,9 +83,9 @@ class ucp_listener extends sort_core implements EventSubscriberInterface
 	/**
 	 * Store user input
 	 *
-	 * @param Event $event
+	 * @param data $event
 	 */
-	public function ucp_prefs_view_update_data($event)
+	public function ucp_prefs_view_update_data(data $event)
 	{
 		if ($this->ucp_sortby_created_time !== null)
 		{

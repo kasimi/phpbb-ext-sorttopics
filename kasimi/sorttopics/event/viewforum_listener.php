@@ -13,8 +13,8 @@ namespace kasimi\sorttopics\event;
 use kasimi\sorttopics\core\sort_core;
 use phpbb\auth\auth;
 use phpbb\config\config;
+use phpbb\event\data;
 use phpbb\request\request_interface;
-use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class viewforum_listener extends sort_core implements EventSubscriberInterface
@@ -47,8 +47,6 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 	protected $custom_sort_dir = null;
 
 	/**
- 	 * Constructor
-	 *
 	 * @param auth				$auth
 	 * @param request_interface	$request
 	 * @param config			$config
@@ -68,11 +66,9 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 	}
 
 	/**
-	 * Register hooks
-	 *
 	 * @return array
 	 */
-	static public function getSubscribedEvents()
+	public static function getSubscribedEvents()
 	{
 		return [
 			'core.viewforum_get_topic_data'			=> 'viewforum_get_topic_data',
@@ -84,9 +80,9 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 	/**
 	 * Remember default sorting for later
 	 *
-	 * @param Event $event
+	 * @param data $event
 	 */
-	public function viewforum_get_topic_data($event)
+	public function viewforum_get_topic_data(data $event)
 	{
 		$this->sort_key = $event['sort_key'];
 		$this->sort_dir = $event['sort_dir'];
@@ -95,9 +91,9 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 	/**
 	 * Apply custom sorting to SQL query
 	 *
-	 * @param Event $event
+	 * @param data $event
 	 */
-	public function viewforum_get_topic_ids_data($event)
+	public function viewforum_get_topic_ids_data(data $event)
 	{
 		$this->sort_options_source = 'default';
 		$this->custom_sort_key = $this->user->data['user_topic_sortby_type'];
@@ -179,9 +175,9 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 	/**
 	 * Add the sorting parameter to the pagination links
 	 *
-	 * @param Event $event
+	 * @param data $event
 	 */
-	public function pagination_generate_page_link($event)
+	public function pagination_generate_page_link(data $event)
 	{
 		if ($this->sort_options_source == 'request' && $this->custom_sort_key == 'c' && strpos($event['base_url'], '/viewforum.') !== false)
 		{

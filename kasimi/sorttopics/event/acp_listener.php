@@ -11,6 +11,7 @@
 namespace kasimi\sorttopics\event;
 
 use phpbb\db\driver\driver_interface as db_interface;
+use phpbb\event\data;
 use phpbb\language\language;
 use phpbb\request\request_interface;
 use phpbb\template\template;
@@ -38,8 +39,6 @@ class acp_listener implements EventSubscriberInterface
 	protected $default_sort_order;
 
 	/**
-	 * Constructor
-	 *
 	 * @param language			$lang
 	 * @param request_interface	$request
 	 * @param db_interface		$db
@@ -65,11 +64,9 @@ class acp_listener implements EventSubscriberInterface
 	}
 
 	/**
-	 * Register hooks
-	 *
 	 * @return array
 	 */
-	static public function getSubscribedEvents()
+	public static function getSubscribedEvents()
 	{
 		return [
 			'core.acp_manage_forums_display_form' => 'acp_manage_forums_display_form',
@@ -80,9 +77,9 @@ class acp_listener implements EventSubscriberInterface
 	/**
 	 * Add <select>s to forum preferences page
 	 *
-	 * @param Event $event
+	 * @param data $event
 	 */
-	public function acp_manage_forums_display_form($event)
+	public function acp_manage_forums_display_form(data $event)
 	{
 		$this->lang->add_lang('acp', 'kasimi/sorttopics');
 
@@ -97,9 +94,9 @@ class acp_listener implements EventSubscriberInterface
 	/**
 	 * Store user input
 	 *
-	 * @param Event $event
+	 * @param data $event
 	 */
-	public function acp_manage_forums_request_data($event)
+	public function acp_manage_forums_request_data(data $event)
 	{
 		$sort_topics_by = $this->request->variable('sk', $this->default_sort_by);
 		$sort_topics_order = $this->request->variable('sd', $this->default_sort_order);
@@ -134,10 +131,10 @@ class acp_listener implements EventSubscriberInterface
 	/**
 	 * Generate <select> markup
 	 *
-	 * @param $forum_data
+	 * @param array $forum_data
 	 * @return array
 	 */
-	protected function gen_topic_sort_options($forum_data)
+	protected function gen_topic_sort_options(array $forum_data)
 	{
 		$this->lang->add_lang('common', 'kasimi/sorttopics');
 
