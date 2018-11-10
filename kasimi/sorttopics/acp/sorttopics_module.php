@@ -18,7 +18,7 @@ class sorttopics_module
 	{
 		global $config, $request, $template, $user, $phpbb_log;
 
-		$user->add_lang('acp/common');
+		$user->add_lang_ext('kasimi/sorttopics', 'acp');
 		$this->tpl_name = 'acp_sorttopics';
 		$this->page_title = $user->lang('SORTTOPICS_TITLE');
 
