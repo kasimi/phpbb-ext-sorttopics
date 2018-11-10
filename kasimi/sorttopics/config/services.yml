@@ -39,3 +39,13 @@ services:
             - '%kasimi.sorttopics.sort_order%'
         tags:
             - { name: 'event.listener' }
+
+    kasimi.sorttopics.acp_controller:
+        class: 'kasimi\sorttopics\controller\acp'
+        arguments:
+            - '@user'
+            - '@language'
+            - '@request'
+            - '@config'
+            - '@template'
+            - '@log'
