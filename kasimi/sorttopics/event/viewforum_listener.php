@@ -148,7 +148,7 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 			'a' => 't.topic_first_poster_name',
 			't' => ['t.topic_last_post_time', 't.topic_last_post_id'],
 			'c' => ['t.topic_time', 't.topic_id'],
-			'r' => (($this->auth->acl_get('m_approve', $event['forum_data']['forum_id'])) ? 't.topic_posts_approved + t.topic_posts_unapproved + t.topic_posts_softdeleted' : 't.topic_posts_approved'),
+			'r' => $this->auth->acl_get('m_approve', $event['forum_data']['forum_id']) ? 't.topic_posts_approved + t.topic_posts_unapproved + t.topic_posts_softdeleted' : 't.topic_posts_approved',
 			's' => 't.topic_title',
 			'v' => 't.topic_views',
 		];
@@ -157,11 +157,11 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 
 		if ($store_reverse)
 		{
-			$direction = (($this->custom_sort_dir == 'd') ? 'ASC' : 'DESC');
+			$direction = $this->custom_sort_dir == 'd' ? 'ASC' : 'DESC';
 		}
 		else
 		{
-			$direction = (($this->custom_sort_dir == 'd') ? 'DESC' : 'ASC');
+			$direction = $this->custom_sort_dir == 'd' ? 'DESC' : 'ASC';
 		}
 
 		if (is_array($sort_by_sql[$this->custom_sort_key]))
@@ -174,7 +174,7 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 		}
 
 		$sql_ary = $event['sql_ary'];
-		$sql_ary['ORDER_BY'] = 't.topic_type ' . ((!$store_reverse) ? 'DESC' : 'ASC') . ', ' . $sql_sort_order;
+		$sql_ary['ORDER_BY'] = 't.topic_type ' . (!$store_reverse ? 'DESC' : 'ASC') . ', ' . $sql_sort_order;
 
 		$event['sql_sort_order'] = $sql_sort_order;
 		$event['sql_ary'] = $sql_ary;
