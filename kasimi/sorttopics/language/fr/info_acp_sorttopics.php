@@ -19,7 +19,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
 // DEVELOPERS PLEASE NOTE
@@ -38,7 +38,7 @@ if (empty($lang) || !is_array($lang))
 // ’ « » “ ” …
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'SORTTOPICS_TITLE'						=> 'Tri des sujets',
 	'SORTTOPICS_CONFIG'						=> 'Paramètres',
 	'SORTTOPICS_CONFIG_UPDATED'				=> 'Extension « <strong>Méthode de tri des sujets</strong> »<br />» Paramètres mis à jour',
@@ -53,4 +53,4 @@ $lang = array_merge($lang, array(
 	'SORTTOPICS_APPLY_TO_SUBFORUMS'			=> 'Appliquer la méthode de tri des sujets de ce forum à tous ses sous-forums',
 	'SORTTOPICS_APPLY_TO_SUBFORUMS_EXPLAIN'	=> 'Permet de définir sur « Oui » la méthode de tri des sujets à ce forum et ses sous-forums, ainsi que leurs sous-forums.',
 	'SORTTOPICS_USER_DEFAULT'				=> 'Méthode de tri par défaut de l’utilisateur',
-));
+]);

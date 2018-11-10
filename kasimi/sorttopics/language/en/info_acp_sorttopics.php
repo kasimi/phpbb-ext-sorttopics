@@ -15,10 +15,10 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'SORTTOPICS_TITLE'						=> 'Sort Topics',
 	'SORTTOPICS_CONFIG'						=> 'Configuration',
 	'SORTTOPICS_CONFIG_UPDATED'				=> '<strong>Sort Topics</strong> extension<br />» Configuration updated',
@@ -33,4 +33,4 @@ $lang = array_merge($lang, array(
 	'SORTTOPICS_APPLY_TO_SUBFORUMS'			=> 'Apply this forum’s topic sorting to all sub-forums',
 	'SORTTOPICS_APPLY_TO_SUBFORUMS_EXPLAIN'	=> 'If set to “Yes“, the above sorting preferences are applied to this forum and all sub-forums (and their sub-forums).',
 	'SORTTOPICS_USER_DEFAULT'				=> 'User default',
-));
+]);

@@ -14,16 +14,16 @@ class sorttopics_info
 {
 	function module()
 	{
-		return array(
+		return [
 			'filename'	=> '\kasimi\sorttopics\acp\sorttopics_module',
 			'title'		=> 'SORTTOPICS_TITLE',
-			'modes'		=> array(
-				'settings' => array(
+			'modes'		=> [
+				'settings' => [
 					'title'	=> 'SORTTOPICS_CONFIG',
 					'auth'	=> 'ext_kasimi/sorttopics && acl_a_board',
-					'cat'	=> array('SORTTOPICS_TITLE'),
-				),
-			),
-		);
+					'cat'	=> ['SORTTOPICS_TITLE'],
+				],
+			],
+		];
 	}
 }

@@ -71,10 +71,10 @@ class acp_listener implements EventSubscriberInterface
 	 */
 	static public function getSubscribedEvents()
 	{
-		return array(
+		return [
 			'core.acp_manage_forums_display_form' => 'acp_manage_forums_display_form',
 			'core.acp_manage_forums_request_data' => 'acp_manage_forums_request_data',
-		);
+		];
 	}
 
 	/**
@@ -85,10 +85,10 @@ class acp_listener implements EventSubscriberInterface
 	public function acp_manage_forums_display_form($event)
 	{
 		$topic_sort_options = $this->gen_topic_sort_options($event['forum_data']);
-		$this->template->assign_vars(array(
+		$this->template->assign_vars([
 			'S_SORTTOPICS_BY_OPTIONS'		=> $topic_sort_options['by'],
 			'S_SORTTOPICS_ORDER_OPTIONS'	=> $topic_sort_options['order'],
-		));
+		]);
 	}
 
 	/**
@@ -102,17 +102,17 @@ class acp_listener implements EventSubscriberInterface
 		$sort_topics_order = $this->request->variable('sd', $this->default_sort_order);
 		$sort_topics_subforums = $this->request->variable('sort_topics_subforums', false);
 
-		$sort_options = array(
+		$sort_options = [
 			'sort_topics_by'	=> $sort_topics_by,
 			'sort_topics_order'	=> $sort_topics_order,
-		);
+		];
 
 		$event['forum_data'] = array_merge($event['forum_data'], $sort_options);
 
 		// Apply this forum's sorting to all sub-forums
 		if ($event['action'] == 'edit' && $sort_topics_subforums)
 		{
-			$subforum_ids = array();
+			$subforum_ids = [];
 			foreach (get_forum_branch($event['forum_data']['forum_id'], 'children', 'descending', false) as $subforum)
 			{
 				$subforum_ids[] = (int) $subforum['forum_id'];
@@ -140,9 +140,9 @@ class acp_listener implements EventSubscriberInterface
 
 		// Dummy variables
 		$sort_days = 0;
-		$limit_days = array();
+		$limit_days = [];
 
-		$sort_by_text = array(
+		$sort_by_text = [
 			'x' => $this->user->lang('SORTTOPICS_USER_DEFAULT'),
 			'a' => $this->user->lang('AUTHOR'),
 			't' => $this->user->lang('POST_TIME'),
@@ -150,16 +150,16 @@ class acp_listener implements EventSubscriberInterface
 			'r' => $this->user->lang('REPLIES'),
 			's' => $this->user->lang('SUBJECT'),
 			'v' => $this->user->lang('VIEWS'),
-		);
+		];
 
 		$sort_key = isset($forum_data['sort_topics_by']) ? $forum_data['sort_topics_by'] : $this->default_sort_by;
 		$sort_dir = isset($forum_data['sort_topics_order']) ? $forum_data['sort_topics_order'] : $this->default_sort_order;
 		$s_limit_days = $s_sort_key = $s_sort_dir = $u_sort_param = '';
 		gen_sort_selects($limit_days, $sort_by_text, $sort_days, $sort_key, $sort_dir, $s_limit_days, $s_sort_key, $s_sort_dir, $u_sort_param, false, $this->default_sort_by, $this->default_sort_order);
 
-		return array(
+		return [
 			'by'	=> $s_sort_key,
 			'order'	=> $s_sort_dir,
-		);
+		];
 	}
 }

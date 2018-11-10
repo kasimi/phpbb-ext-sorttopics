@@ -37,9 +37,9 @@ class sorttopics_module
 			trigger_error($user->lang('CONFIG_UPDATED') . adm_back_link($this->u_action));
 		}
 
-		$template->assign_vars(array(
+		$template->assign_vars([
 			'SORTTOPICS_UCP_ENABLED'	=> $config['kasimi.sorttopics.ucp_enabled'],
 			'U_ACTION'					=> $this->u_action,
-		));
+		]);
 	}
 }

@@ -15,10 +15,10 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'SORTTOPICS_TITLE'						=> 'Themen sortieren',
 	'SORTTOPICS_CONFIG'						=> 'Konfiguration',
 	'SORTTOPICS_CONFIG_UPDATED'				=> '<strong>Sort Topics</strong> Extension<br />» Konfiguration aktualisiert',
@@ -33,4 +33,4 @@ $lang = array_merge($lang, array(
 	'SORTTOPICS_APPLY_TO_SUBFORUMS'			=> 'Sortier-Einstellungen in Unter-Foren kopieren',
 	'SORTTOPICS_APPLY_TO_SUBFORUMS_EXPLAIN'	=> 'Wenn ja, werden die obigen Einstellungen in alle Unter-Foren des Forums (und deren Unter-Foren) kopiert.',
 	'SORTTOPICS_USER_DEFAULT'				=> 'Benutzer-Standard',
-));
+]);

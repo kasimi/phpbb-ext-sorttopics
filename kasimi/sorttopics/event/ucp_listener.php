@@ -42,11 +42,11 @@ class ucp_listener extends sort_core implements EventSubscriberInterface
 	 */
 	static public function getSubscribedEvents()
 	{
-		return array(
+		return [
 			'core.ucp_prefs_modify_common'			=> 'ucp_prefs_modify_common',
 			'core.ucp_prefs_view_data'				=> 'ucp_prefs_view_data',
 			'core.ucp_prefs_view_update_data'		=> 'ucp_prefs_view_update_data',
-		);
+		];
 	}
 
 	/**

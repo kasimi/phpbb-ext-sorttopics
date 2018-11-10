@@ -15,10 +15,10 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'SORTTOPICS_TITLE'						=> 'Ordina argomenti',
 	'SORTTOPICS_CONFIG'						=> 'Configurazione',
 	'SORTTOPICS_CONFIG_UPDATED'				=> 'Estensione <strong>Ordina argomenti</strong><br />» Configurazione aggiornata',
@@ -33,4 +33,4 @@ $lang = array_merge($lang, array(
 	'SORTTOPICS_APPLY_TO_SUBFORUMS'			=> 'Applica l’ordinamento di questo forum a tutti i subforum',
 	'SORTTOPICS_APPLY_TO_SUBFORUMS_EXPLAIN'	=> 'Se impostata su “Sì”, le perferenze di ordinamento qui specificate si applicheranno al forum, ai suoi subforum e ai loro subforum.',
 	'SORTTOPICS_USER_DEFAULT'				=> 'Predefinito utente',
-));
+]);

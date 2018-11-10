@@ -74,11 +74,11 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 	 */
 	static public function getSubscribedEvents()
 	{
-		return array(
+		return [
 			'core.viewforum_get_topic_data'			=> 'viewforum_get_topic_data',
 			'core.viewforum_get_topic_ids_data'		=> 'viewforum_get_topic_ids_data',
 			'core.pagination_generate_page_link'	=> 'pagination_generate_page_link',
-		);
+		];
 	}
 
 	/**
@@ -134,14 +134,14 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 		}
 
 		// This forum requires custom topic sorting, let's get our hands dirty
-		$sort_by_sql = array(
+		$sort_by_sql = [
 			'a' => 't.topic_first_poster_name',
-			't' => array('t.topic_last_post_time', 't.topic_last_post_id'),
-			'c' => array('t.topic_time', 't.topic_id'),
+			't' => ['t.topic_last_post_time', 't.topic_last_post_id'],
+			'c' => ['t.topic_time', 't.topic_id'],
 			'r' => (($this->auth->acl_get('m_approve', $event['forum_data']['forum_id'])) ? 't.topic_posts_approved + t.topic_posts_unapproved + t.topic_posts_softdeleted' : 't.topic_posts_approved'),
 			's' => 't.topic_title',
 			'v' => 't.topic_views',
-		);
+		];
 
 		$store_reverse = $event['store_reverse'];
 
