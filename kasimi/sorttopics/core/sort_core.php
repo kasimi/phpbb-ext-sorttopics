@@ -11,15 +11,15 @@
 namespace kasimi\sorttopics\core;
 
 use phpbb\language\language;
-use phpbb\template\context;
+use phpbb\template\template;
 
 abstract class sort_core
 {
 	/** @var language */
 	protected $lang;
 
-	/** @var context */
-	protected $template_context;
+	/** @var template */
+	protected $template;
 
 	/**
 	 * @param language $lang
@@ -30,11 +30,11 @@ abstract class sort_core
 	}
 
 	/**
-	 * @param context $template_context
+	 * @param template $template
 	 */
-	public function set_template_context(context $template_context)
+	public function set_template(template $template)
 	{
-		$this->template_context = $template_context;
+		$this->template = $template;
 	}
 
 	/**
@@ -47,8 +47,7 @@ abstract class sort_core
 	 */
 	protected function inject_created_time_select_option($template_select_key_var, $sort_key, $template_select_dir_var = false, $sort_dir = false)
 	{
-		$rootref = &$this->template_context->get_root_ref();
-		$select = $rootref[$template_select_key_var];
+		$select = $this->template->retrieve_var($template_select_key_var);
 
 		// Insert 'Created time'
 		$this->lang->add_lang('common', 'kasimi/sorttopics');
@@ -58,11 +57,11 @@ abstract class sort_core
 		// Fix selection
 		$select = $this->set_selected($select, $sort_key);
 
-		$rootref[$template_select_key_var] = $select;
+		$this->template->assign_var($template_select_key_var, $select);
 
 		if ($template_select_dir_var !== false && $sort_dir !== false)
 		{
-			$rootref[$template_select_dir_var] = $this->set_selected($rootref[$template_select_dir_var], $sort_dir);
+			$this->template->assign_var($template_select_dir_var, $this->set_selected($this->template->retrieve_var($template_select_dir_var), $sort_dir));
 		}
 	}
 

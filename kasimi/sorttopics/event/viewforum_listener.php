@@ -15,10 +15,15 @@ use phpbb\auth\auth;
 use phpbb\config\config;
 use phpbb\event\data;
 use phpbb\request\request_interface;
+use phpbb\template\template;
+use phpbb\user;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class viewforum_listener extends sort_core implements EventSubscriberInterface
 {
+	/** @var user */
+	protected $user;
+
 	/** @var auth */
 	protected $auth;
 
@@ -27,6 +32,9 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 
 	/** @var config */
 	protected $config;
+
+	/** @var template */
+	protected $template;
 
 	/** @var string */
 	protected $default_sort_by;
@@ -47,21 +55,27 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 	protected $custom_sort_dir = null;
 
 	/**
+	 * @param user				$user
 	 * @param auth				$auth
 	 * @param request_interface	$request
 	 * @param config			$config
+	 * @param template			$template
 	 * @param string			$default_sort_by
 	 */
 	public function __construct(
+		user $user,
 		auth $auth,
 		request_interface $request,
 		config $config,
+		template $template,
 		$default_sort_by
 	)
 	{
+		$this->user				= $user;
 		$this->auth				= $auth;
 		$this->request			= $request;
 		$this->config			= $config;
+		$this->template			= $template;
 		$this->default_sort_by	= $default_sort_by;
 	}
 
@@ -167,8 +181,7 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 
 		if ($this->sort_options_source == 'request' && $this->custom_sort_key == 'c')
 		{
-			$rootref = &$this->template_context->get_root_ref();
-			$rootref['U_VIEW_FORUM'] .= '&amp;sk=c';
+			$this->template->assign_var('U_VIEW_FORUM', $this->template->retrieve_var('U_VIEW_FORUM') . '&amp;sk=c');
 		}
 	}
 

@@ -7,15 +7,17 @@ services:
         abstract: true
         calls:
             - ['set_language', ['@language']]
-            - ['set_template_context', ['@template_context']]
+            - ['set_template', ['@template']]
 
     kasimi.sorttopics.viewforum_listener:
         class: 'kasimi\sorttopics\event\viewforum_listener'
         parent: 'kasimi.sorttopics.sort_core'
         arguments:
+            - '@user'
             - '@auth'
             - '@request'
             - '@config'
+            - '@template'
             - '%kasimi.sorttopics.sort_by%'
         tags:
             - { name: 'event.listener' }
@@ -24,6 +26,7 @@ services:
         class: 'kasimi\sorttopics\event\ucp_listener'
         parent: 'kasimi.sorttopics.sort_core'
         arguments:
+            - '@user'
             - '@config'
         tags:
             - { name: 'event.listener' }

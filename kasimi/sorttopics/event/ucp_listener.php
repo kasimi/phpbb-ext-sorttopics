@@ -13,10 +13,14 @@ namespace kasimi\sorttopics\event;
 use kasimi\sorttopics\core\sort_core;
 use phpbb\config\config;
 use phpbb\event\data;
+use phpbb\user;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ucp_listener extends sort_core implements EventSubscriberInterface
 {
+	/** @var user */
+	protected $user;
+
 	/** @var config */
 	protected $config;
 
@@ -24,13 +28,16 @@ class ucp_listener extends sort_core implements EventSubscriberInterface
 	protected $ucp_sortby_created_time;
 
 	/**
-	 * @param config $config
+	 * @param user		$user
+	 * @param config	$config
 	 */
 	public function __construct(
+		user $user,
 		config $config
 	)
 	{
-		$this->config = $config;
+		$this->user		= $user;
+		$this->config	= $config;
 	}
 
 	/**
