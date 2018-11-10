@@ -10,23 +10,23 @@
 
 namespace kasimi\sorttopics\core;
 
+use phpbb\language\language;
 use phpbb\template\context;
-use phpbb\user;
 
 abstract class sort_core
 {
-	/** @var user */
-	protected $user;
+	/** @var language */
+	protected $lang;
 
 	/** @var context */
 	protected $template_context;
 
 	/**
-	 * @param user $user
+	 * @param language $lang
 	 */
-	public function set_user(user $user)
+	public function set_language(language $lang)
 	{
-		$this->user = $user;
+		$this->lang = $lang;
 	}
 
 	/**
@@ -51,8 +51,8 @@ abstract class sort_core
 		$select = $rootref[$template_select_key_var];
 
 		// Insert 'Created time'
-		$this->user->add_lang_ext('kasimi/sorttopics', 'common');
-		$new_option = '<option value="c">' . $this->user->lang('SORTTOPICS_CREATED_TIME') . '</option>';
+		$this->lang->add_lang('common', 'kasimi/sorttopics');
+		$new_option = '<option value="c">' . $this->lang->lang('SORTTOPICS_CREATED_TIME') . '</option>';
 		$select = preg_replace("/(value=\"t\".*?<\/option>)/su", "$1" . $new_option, $select);
 
 		// Fix selection

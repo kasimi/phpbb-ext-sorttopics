@@ -16,9 +16,10 @@ class sorttopics_module
 
 	function main($id, $mode)
 	{
-		global $config, $request, $template, $user, $phpbb_log;
+		global $phpbb_container, $config, $request, $template, $user, $phpbb_log;
+		$lang = $phpbb_container->get('language');
 
-		$user->add_lang_ext('kasimi/sorttopics', 'acp');
+		$lang->add_lang('acp', 'kasimi/sorttopics');
 		$this->tpl_name = 'acp_sorttopics';
 		$this->page_title = $user->lang('SORTTOPICS_TITLE');
 
@@ -28,13 +29,13 @@ class sorttopics_module
 		{
 			if (!check_form_key('acp_sorttopics'))
 			{
-				trigger_error($user->lang('FORM_INVALID') . adm_back_link($this->u_action));
+				trigger_error($lang->lang('FORM_INVALID') . adm_back_link($this->u_action));
 			}
 
 			$config->set('kasimi.sorttopics.ucp_enabled', $request->variable('sorttopics_ucp_enabled', 0));
 
 			$phpbb_log->add('admin', $user->data['user_id'], $user->ip, 'SORTTOPICS_CONFIG_UPDATED');
-			trigger_error($user->lang('CONFIG_UPDATED') . adm_back_link($this->u_action));
+			trigger_error($lang->lang('CONFIG_UPDATED') . adm_back_link($this->u_action));
 		}
 
 		$template->assign_vars([

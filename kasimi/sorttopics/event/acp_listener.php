@@ -11,16 +11,16 @@
 namespace kasimi\sorttopics\event;
 
 use phpbb\db\driver\driver_interface as db_interface;
+use phpbb\language\language;
 use phpbb\request\request_interface;
 use phpbb\template\template;
-use phpbb\user;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class acp_listener implements EventSubscriberInterface
 {
-	/** @var user */
-	protected $user;
+	/** @var language */
+	protected $lang;
 
 	/** @var request_interface */
 	protected $request;
@@ -40,7 +40,7 @@ class acp_listener implements EventSubscriberInterface
 	/**
 	 * Constructor
 	 *
-	 * @param user				$user
+	 * @param language			$lang
 	 * @param request_interface	$request
 	 * @param db_interface		$db
 	 * @param template			$template
@@ -48,7 +48,7 @@ class acp_listener implements EventSubscriberInterface
 	 * @param string			$default_sort_order
 	 */
 	public function __construct(
-		user $user,
+		language $lang,
 		request_interface $request,
 		db_interface $db,
 		template $template,
@@ -56,7 +56,7 @@ class acp_listener implements EventSubscriberInterface
 		$default_sort_order
 	)
 	{
-		$this->user 				= $user;
+		$this->lang 				= $lang;
 		$this->request				= $request;
 		$this->db					= $db;
 		$this->template				= $template;
@@ -84,7 +84,7 @@ class acp_listener implements EventSubscriberInterface
 	 */
 	public function acp_manage_forums_display_form($event)
 	{
-		$this->user->add_lang_ext('kasimi/sorttopics', 'acp');
+		$this->lang->add_lang('acp', 'kasimi/sorttopics');
 
 		$topic_sort_options = $this->gen_topic_sort_options($event['forum_data']);
 
@@ -139,20 +139,20 @@ class acp_listener implements EventSubscriberInterface
 	 */
 	protected function gen_topic_sort_options($forum_data)
 	{
-		$this->user->add_lang_ext('kasimi/sorttopics', 'common');
+		$this->lang->add_lang('common', 'kasimi/sorttopics');
 
 		// Dummy variables
 		$sort_days = 0;
 		$limit_days = [];
 
 		$sort_by_text = [
-			'x' => $this->user->lang('SORTTOPICS_USER_DEFAULT'),
-			'a' => $this->user->lang('AUTHOR'),
-			't' => $this->user->lang('POST_TIME'),
-			'c' => $this->user->lang('SORTTOPICS_CREATED_TIME'),
-			'r' => $this->user->lang('REPLIES'),
-			's' => $this->user->lang('SUBJECT'),
-			'v' => $this->user->lang('VIEWS'),
+			'x' => $this->lang->lang('SORTTOPICS_USER_DEFAULT'),
+			'a' => $this->lang->lang('AUTHOR'),
+			't' => $this->lang->lang('POST_TIME'),
+			'c' => $this->lang->lang('SORTTOPICS_CREATED_TIME'),
+			'r' => $this->lang->lang('REPLIES'),
+			's' => $this->lang->lang('SUBJECT'),
+			'v' => $this->lang->lang('VIEWS'),
 		];
 
 		$sort_key = isset($forum_data['sort_topics_by']) ? $forum_data['sort_topics_by'] : $this->default_sort_by;
