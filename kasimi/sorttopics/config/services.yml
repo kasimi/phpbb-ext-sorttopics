@@ -1,32 +1,35 @@
 imports:
-    - { resource: defaults.yml }
+    - { resource: 'defaults.yml' }
 
 services:
     kasimi.sorttopics.sort_core:
-        class: kasimi\sorttopics\core\sort_core
+        class: 'kasimi\sorttopics\core\sort_core'
         abstract: true
         calls:
-            - [set_user, ['@user']]
-            - [set_template_context, ['@template_context']]
+            - ['set_user', ['@user']]
+            - ['set_template_context', ['@template_context']]
+
     kasimi.sorttopics.viewforum_listener:
-        class: kasimi\sorttopics\event\viewforum_listener
-        parent: kasimi.sorttopics.sort_core
+        class: 'kasimi\sorttopics\event\viewforum_listener'
+        parent: 'kasimi.sorttopics.sort_core'
         arguments:
             - '@auth'
             - '@request'
             - '@config'
             - '%kasimi.sorttopics.sort_by%'
         tags:
-            - { name: event.listener }
+            - { name: 'event.listener' }
+
     kasimi.sorttopics.ucp_listener:
-        class: kasimi\sorttopics\event\ucp_listener
-        parent: kasimi.sorttopics.sort_core
+        class: 'kasimi\sorttopics\event\ucp_listener'
+        parent: 'kasimi.sorttopics.sort_core'
         arguments:
             - '@config'
         tags:
-            - { name: event.listener }
+            - { name: 'event.listener' }
+
     kasimi.sorttopics.acp_listener:
-        class: kasimi\sorttopics\event\acp_listener
+        class: 'kasimi\sorttopics\event\acp_listener'
         arguments:
             - '@user'
             - '@request'
@@ -35,4 +38,4 @@ services:
             - '%kasimi.sorttopics.sort_by%'
             - '%kasimi.sorttopics.sort_order%'
         tags:
-            - { name: event.listener }
+            - { name: 'event.listener' }
