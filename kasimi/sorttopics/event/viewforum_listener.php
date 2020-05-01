@@ -54,14 +54,6 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 	/** @var string */
 	protected $custom_sort_dir = null;
 
-	/**
-	 * @param user				$user
-	 * @param auth				$auth
-	 * @param request_interface	$request
-	 * @param config			$config
-	 * @param template			$template
-	 * @param string			$default_sort_by
-	 */
 	public function __construct(
 		user $user,
 		auth $auth,
@@ -79,10 +71,7 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 		$this->default_sort_by	= $default_sort_by;
 	}
 
-	/**
-	 * @return array
-	 */
-	public static function getSubscribedEvents()
+	public static function getSubscribedEvents(): array
 	{
 		return [
 			'core.viewforum_get_topic_data'			=> 'viewforum_get_topic_data',
@@ -93,10 +82,8 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 
 	/**
 	 * Remember default sorting for later
-	 *
-	 * @param data $event
 	 */
-	public function viewforum_get_topic_data(data $event)
+	public function viewforum_get_topic_data(data $event): void
 	{
 		$this->sort_key = $event['sort_key'];
 		$this->sort_dir = $event['sort_dir'];
@@ -104,10 +91,8 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 
 	/**
 	 * Apply custom sorting to SQL query
-	 *
-	 * @param data $event
 	 */
-	public function viewforum_get_topic_ids_data(data $event)
+	public function viewforum_get_topic_ids_data(data $event): void
 	{
 		$this->sort_options_source = 'default';
 		$this->custom_sort_key = $this->user->data['user_topic_sortby_type'];
@@ -187,10 +172,8 @@ class viewforum_listener extends sort_core implements EventSubscriberInterface
 
 	/**
 	 * Add the sorting parameter to the pagination links
-	 *
-	 * @param data $event
 	 */
-	public function pagination_generate_page_link(data $event)
+	public function pagination_generate_page_link(data $event): void
 	{
 		if ($this->sort_options_source == 'request' && $this->custom_sort_key == 'c' && strpos($event['base_url'], '/viewforum.') !== false)
 		{

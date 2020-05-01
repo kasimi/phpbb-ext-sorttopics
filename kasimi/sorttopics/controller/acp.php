@@ -37,14 +37,6 @@ class acp extends base
 	/** @var log_interface */
 	protected $log;
 
-	/**
-	 * @param user				$user
-	 * @param language			$lang
-	 * @param request_interface	$request
-	 * @param config			$config
-	 * @param template			$template
-	 * @param log_interface		$log
-	 */
 	public function __construct(
 		user $user,
 		language $lang,
@@ -62,12 +54,7 @@ class acp extends base
 		$this->log		= $log;
 	}
 
-	/**
-	 * @param string $id
-	 * @param string $mode
-	 * @param string $u_action
-	 */
-	public function main($id, $mode, $u_action)
+	public function main(string $id, string $mode, string $u_action): void
 	{
 		$ext_name = 'kasimi/sorttopics';
 

@@ -18,25 +18,14 @@ abstract class base
 	/** @var string */
 	protected $page_title;
 
-	/**
-	 * @param string $id
-	 * @param string $mode
-	 * @param string $u_action
-	 */
-	abstract public function main($id, $mode, $u_action);
+	abstract public function main(string $id, string $mode, string $u_action): void;
 
-	/**
-	 * @return string
-	 */
-	public function get_tpl_name()
+	public function get_tpl_name(): string
 	{
 		return $this->tpl_name;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function get_page_title()
+	public function get_page_title(): string
 	{
 		return $this->page_title;
 	}

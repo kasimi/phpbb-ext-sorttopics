@@ -26,17 +26,9 @@ abstract class base
 	/** @var controller_base */
 	protected $controller;
 
-	/**
-	 * @return string
-	 */
-	abstract protected function get_controller_service_id();
+	abstract protected function get_controller_service_id(): string;
 
-	/**
-	 * @param string $id
-	 * @param string $mode
-	 * @throws \Exception
-	 */
-	public function main($id, $mode)
+	public function main(string $id, string $mode): void
 	{
 		global $phpbb_container;
 

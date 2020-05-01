@@ -21,31 +21,20 @@ abstract class sort_core
 	/** @var template */
 	protected $template;
 
-	/**
-	 * @param language $lang
-	 */
-	public function set_language(language $lang)
+	public function set_language(language $lang): void
 	{
 		$this->lang = $lang;
 	}
 
-	/**
-	 * @param template $template
-	 */
-	public function set_template(template $template)
+	public function set_template(template $template): void
 	{
 		$this->template = $template;
 	}
 
 	/**
 	 * Updates the template data by inserting the (possibly selected) 'Created time' <option> into the $select tag right after the 'Post time' <option>
-	 *
-	 * @param string $template_select_key_var
-	 * @param string $sort_key
-	 * @param bool $template_select_dir_var
-	 * @param bool $sort_dir
 	 */
-	protected function inject_created_time_select_option($template_select_key_var, $sort_key, $template_select_dir_var = false, $sort_dir = false)
+	protected function inject_created_time_select_option(string $template_select_key_var, string $sort_key, bool $template_select_dir_var = false, bool $sort_dir = false): void
 	{
 		$select = $this->template->retrieve_var($template_select_key_var);
 
@@ -67,12 +56,8 @@ abstract class sort_core
 
 	/**
 	 * Marks the option with the specified value as selected
-	 *
-	 * @param string $select
-	 * @param string $selected_option_value
-	 * @return string
 	 */
-	protected function set_selected($select, $selected_option_value)
+	protected function set_selected(string $select, string $selected_option_value): string
 	{
 		$selected = ' selected="selected"';
 		$select = str_replace($selected, '', $select);

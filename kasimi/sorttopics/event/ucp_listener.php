@@ -27,10 +27,6 @@ class ucp_listener extends sort_core implements EventSubscriberInterface
 	/** @var bool */
 	protected $ucp_sortby_created_time;
 
-	/**
-	 * @param user		$user
-	 * @param config	$config
-	 */
 	public function __construct(
 		user $user,
 		config $config
@@ -40,10 +36,7 @@ class ucp_listener extends sort_core implements EventSubscriberInterface
 		$this->config	= $config;
 	}
 
-	/**
-	 * @return array
-	 */
-	public static function getSubscribedEvents()
+	public static function getSubscribedEvents(): array
 	{
 		return [
 			'core.ucp_prefs_modify_common'			=> 'ucp_prefs_modify_common',
@@ -54,10 +47,8 @@ class ucp_listener extends sort_core implements EventSubscriberInterface
 
 	/**
 	 * Adds the 'Created time' <option> to the template
-	 *
-	 * @param data $event
 	 */
-	public function ucp_prefs_modify_common(data $event)
+	public function ucp_prefs_modify_common(data $event): void
 	{
 		if ($this->config['kasimi.sorttopics.ucp_enabled'] && $event['mode'] == 'view')
 		{
@@ -68,10 +59,8 @@ class ucp_listener extends sort_core implements EventSubscriberInterface
 
 	/**
 	 * Sanitize user input
-	 *
-	 * @param data $event
 	 */
-	public function ucp_prefs_view_data(data $event)
+	public function ucp_prefs_view_data(data $event): void
 	{
 		if ($this->config['kasimi.sorttopics.ucp_enabled'] && $event['submit'])
 		{
@@ -89,10 +78,8 @@ class ucp_listener extends sort_core implements EventSubscriberInterface
 
 	/**
 	 * Store user input
-	 *
-	 * @param data $event
 	 */
-	public function ucp_prefs_view_update_data(data $event)
+	public function ucp_prefs_view_update_data(data $event): void
 	{
 		if ($this->ucp_sortby_created_time !== null)
 		{

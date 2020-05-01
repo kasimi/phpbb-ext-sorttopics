@@ -38,14 +38,6 @@ class acp_listener implements EventSubscriberInterface
 	/** @var string */
 	protected $default_sort_order;
 
-	/**
-	 * @param language			$lang
-	 * @param request_interface	$request
-	 * @param db_interface		$db
-	 * @param template			$template
-	 * @param string			$default_sort_by
-	 * @param string			$default_sort_order
-	 */
 	public function __construct(
 		language $lang,
 		request_interface $request,
@@ -63,10 +55,7 @@ class acp_listener implements EventSubscriberInterface
 		$this->default_sort_order	= $default_sort_order;
 	}
 
-	/**
-	 * @return array
-	 */
-	public static function getSubscribedEvents()
+	public static function getSubscribedEvents(): array
 	{
 		return [
 			'core.acp_manage_forums_display_form' => 'acp_manage_forums_display_form',
@@ -76,10 +65,8 @@ class acp_listener implements EventSubscriberInterface
 
 	/**
 	 * Add <select>s to forum preferences page
-	 *
-	 * @param data $event
 	 */
-	public function acp_manage_forums_display_form(data $event)
+	public function acp_manage_forums_display_form(data $event): void
 	{
 		$this->lang->add_lang('acp', 'kasimi/sorttopics');
 
@@ -93,10 +80,8 @@ class acp_listener implements EventSubscriberInterface
 
 	/**
 	 * Store user input
-	 *
-	 * @param data $event
 	 */
-	public function acp_manage_forums_request_data(data $event)
+	public function acp_manage_forums_request_data(data $event): void
 	{
 		$sort_topics_by = $this->request->variable('sk', $this->default_sort_by);
 		$sort_topics_order = $this->request->variable('sd', $this->default_sort_order);
@@ -130,11 +115,8 @@ class acp_listener implements EventSubscriberInterface
 
 	/**
 	 * Generate <select> markup
-	 *
-	 * @param array $forum_data
-	 * @return array
 	 */
-	protected function gen_topic_sort_options(array $forum_data)
+	protected function gen_topic_sort_options(array $forum_data): array
 	{
 		$this->lang->add_lang('common', 'kasimi/sorttopics');
 

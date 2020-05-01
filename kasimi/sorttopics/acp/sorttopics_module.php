@@ -12,10 +12,7 @@ namespace kasimi\sorttopics\acp;
 
 class sorttopics_module extends base
 {
-	/**
-	 * @return string
-	 */
-	protected function get_controller_service_id()
+	protected function get_controller_service_id(): string
 	{
 		return 'kasimi.sorttopics.acp_controller';
 	}

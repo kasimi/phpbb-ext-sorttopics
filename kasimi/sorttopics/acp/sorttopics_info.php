@@ -12,7 +12,7 @@ namespace kasimi\sorttopics\acp;
 
 class sorttopics_info
 {
-	public function module()
+	public function module(): array
 	{
 		return [
 			'filename'	=> '\kasimi\sorttopics\acp\sorttopics_module',
