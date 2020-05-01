@@ -15,12 +15,12 @@
 		}
 	],
 	"require": {
-		"php": ">=5.3.3"
+		"php": ">=7.2.0"
 	},
 	"extra": {
 		"display-name": "Sort Topics",
 		"soft-require": {
-			"phpbb/phpbb": ">=3.1.4-RC1"
+			"phpbb/phpbb": ">=3.3.0"
 		}
 	}
 }
